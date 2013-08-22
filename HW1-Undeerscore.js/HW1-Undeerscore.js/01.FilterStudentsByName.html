@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/underscore.js"></script>
+    <script src="Scripts/class.js"></script>
+</head>
+<body>
+    <script>
+        var student = Class.create({
+            init: function (fname, lname) {
+                this.fname = fname;
+                this.lname = lname;
+            },
+            toString: function () {
+                return this.fname + " " + this.lname;
+            }
+        });
+
+        var students = [
+            new student("Ivan", "Petrov"),
+            new student("Gosho", "Goshev"),
+            new student("Pesho", "Stoev"),
+            new student("Drago", "Peev")];
+
+        var filteredStudents = _.filter(students, function(st){
+           return st.fname < st.lname;
+        });
+
+        var descendingSortStudents =
+            _.sortBy(filteredStudents, function (st) {
+                return st.toString();
+            })
+                .reverse();
+
+        _.each(descendingSortStudents, function (st) {
+            console.log(st.toString());
+        });
+    </script>
+</body>
+</html>

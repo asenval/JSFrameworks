@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/underscore.js"></script>
+    <script src="Scripts/class.js"></script>
+</head>
+<body>
+    <script>
+        var Person = Class.create({
+            init: function (fname, lname) {
+                this.fname = fname;
+                this.lname = lname;
+            },
+            toString: function () {
+                return this.fname + " " + this.lname;
+            }
+        });
+
+        var people = [
+            new Person("Ivan", "Petrov"),
+            new Person("Gosho", "Goshev"),
+            new Person("Gosho", "Petrov"),
+            new Person("Pesho", "Stoev"),
+            new Person("Pesho", "Peev"),
+            new Person("Pesho", "Peev"),
+            new Person("Drago", "Peev")];
+
+        var groupsFname = _.groupBy(people, 'fname');
+        var maxFnameGroupName = _.max(groupsFname, function (gr) {
+            return gr.length
+        })[0].fname;
+
+        console.log("Most common first name is " + maxFnameGroupName);
+
+        var LnameNamesCount = _.countBy(people, function (p) { return p.lname });
+        var indexLastName = _.max(LnameNamesCount);
+        LnameNamesCount = _.invert(LnameNamesCount);
+        var maxLnameGroupName = (LnameNamesCount[indexLastName]);
+
+        console.log("Most common last name is " + maxLnameGroupName);
+    </script>
+</body>
+</html>

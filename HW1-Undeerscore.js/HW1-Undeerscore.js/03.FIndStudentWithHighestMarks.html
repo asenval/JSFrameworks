@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/underscore.js"></script>
+    <script src="Scripts/class.js"></script>
+</head>
+<body>
+    <script>
+        var student = Class.create({
+            init: function (fname, lname, marks) {
+                this.fname = fname;
+                this.lname = lname;
+                this.marks = marks;
+            },
+            toString: function () {
+                return this.fname + " " + this.lname;
+            }
+        });
+
+        Array.prototype.sum = function () {
+            var sum = 0;
+            for (var i = 0, L = this.length, sum = 0; i < L; i++) {
+                sum += this[i];
+            };
+            return sum;
+        }
+
+        FindAverigeMark = function (marks) {
+            return (marks.sum() / marks.length).toFixed(2);
+        };
+
+        var students = [
+            new student("Ivan", "Petrov", [5.25, 4.8, 3.5, 5.2]),
+            new student("Gosho", "Goshev", [5.25, 3.9, 3.5, 4.2]),
+            new student("Maria", "Stoyanova", [3.95, 4.3, 5.9, 6.0]),
+            new student("Svetla", "Peneva", [5.95, 3.8, 3.1, 4.6]),
+            new student("Pesho", "Stoev", [5.1, 4.6, 3.5, 3.5]),
+            new student("Drago", "Peev", [4.8, 4.1, 5.5, 3.9])];
+
+        var BestStudent = _.max(students, function (st) {
+            return FindAverigeMark(st.marks);
+        });
+
+        console.log(BestStudent.toString() + "- average mark: " + FindAverigeMark(BestStudent.marks));
+
+        console.log("----------AllStudentAvaragemark--------------");
+        _.each(students, function (st) {
+            console.log(st.toString() + "- average mark: " + FindAverigeMark(st.marks));
+        });
+    </script>
+</body>
+</html>

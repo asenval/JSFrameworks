@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+	<script src="Scripts/underscore.js"></script>
+    <script src="Scripts/class.js"></script>
+</head>
+<body>
+    <script>
+        var student = Class.create({
+            init: function (fname, lname, age) {
+                this.fname = fname;
+                this.lname = lname;
+                this.age = age;
+            },
+            toString: function () {
+                return this.fname + " " + this.lname;
+            }
+        });
+
+        var students = [
+            new student("Ivan", "Petrov", 15),
+            new student("Gosho", "Goshev", 18),
+            new student("Maria", "Stoyanova", 22),
+            new student("Svetla", "Peneva", 28),
+            new student("Pesho", "Stoev", 23),
+            new student("Drago", "Peev", 35)];
+
+        var filteredStudentsByAge = _.filter(students, function(st){
+           return st.age >= 18 && st.age <= 24;
+        });
+                
+        _.each(filteredStudentsByAge, function (st) {
+            console.log(st.toString());
+        });
+
+        console.log("---------OR-Like-Array---------");
+
+        console.log(_.map(filteredStudentsByAge, function (st) {
+            return st.toString();
+        }));
+    </script>
+</body>
+</html>

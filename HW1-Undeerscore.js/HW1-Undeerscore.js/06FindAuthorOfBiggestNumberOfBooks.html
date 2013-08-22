@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/underscore.js"></script>
+    <script src="Scripts/class.js"></script>
+</head>
+<body>
+    <script>
+        var Book = Class.create({
+            init: function (name, author) {
+                this.name = name,
+                this.author = author;
+            },
+            toString: function () {
+                return this.name + ' ' + this.author;
+            }
+        });
+
+        var books = [];
+        for (var i = 1; i < 11; i++) {
+            var bname = "book" + i;
+            var bauthor = "author" + (Math.round(Math.random()*2) + 1);
+            books.push(new Book(bname, bauthor));
+        }
+        
+        _.each(books, function (b) {
+            console.log(b);
+        });
+
+        var groups = _.groupBy(books, 'author');
+
+        var maxGroup = _.max(groups, function (gr) {
+            return gr.length
+        });
+
+        var bestAuthor = maxGroup[0].author;
+        console.log(bestAuthor);
+    </script>
+</body>
+</html>
