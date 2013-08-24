@@ -1,0 +1,28 @@
+﻿
+#main-content{
+	display: inline-block;
+    height:100px;
+    background-color: #989898;
+    border-radius: 5px;
+    padding: 0;
+}
+
+
+#student-content{
+	display: inline-block;
+    background-color: #DADADA;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin: 10px;
+}
+
+#student-content div{
+	margin: 10px 0;
+}
+
+#student-content div p{
+	margin: 0;
+    padding: 0;
+}
+
+

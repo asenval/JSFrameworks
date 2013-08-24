@@ -62,10 +62,38 @@ define(["class"], function (Class) {
 	    }
 	});
 
-	controlers.getListView = function (itemsSource) {
-		return new ListView(itemsSource);
-	}
+	var ComboBox = Class.create({
+	    init: function (itemsSource) {
+	        if (!(itemsSource instanceof Array)) {
+	            throw "The itemsSource of a TableView must be an array!";
+	        }
+	        this.itemsSource = itemsSource;
+	    },
+	    render: function (template) {
+	        var divItem = document.createElement("div");
+	        for (var i = 0; i < this.itemsSource.length; i++) {	            
+	            var item = this.itemsSource[i];
+	            divItem.innerHTML += template(item);
+	        }
 
+	        $(divItem).children().hide();
+	        $(":first-child", divItem).addClass("selected").show();
+
+	        $("#student-content").on("click", ".student-item", function () {
+	            if ($(this).hasClass("selected")) {
+	                $(this).removeClass("selected")
+	                $(this).parent().children().show('slow');
+	            }
+	            else {
+	                $(this).addClass("selected")
+	                $(this).parent().children().hide();
+	                $(this).show();
+	            }
+	        });
+	        return divItem.innerHTML;
+	    }
+	});
+    
 	controlers.getTableView = function (itemsSource, colsCount) {
 	    return new TableView(itemsSource, colsCount);
 	}
@@ -73,6 +101,10 @@ define(["class"], function (Class) {
 	controlers.getTableMarkView = function (itemsSource, colsCount) {
 	    return new TableMarkView(itemsSource, colsCount);
 	}
-	
+
+	controlers.getComboBox = function (itemsSource) {
+	    return new ComboBox(itemsSource);
+	}
+
 	return controlers;
 });

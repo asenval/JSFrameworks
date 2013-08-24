@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<script src="Scripts/libs/require.js" data-main="scripts/app-config-task2"></script>
+    <link href="styles/styleTask2.css" rel="stylesheet" />
+</head>
+<body>
+    <script type="x-mustache-template" id="student-template">
+        <div class="student-item" id="student-item-{{id}}">
+          <strong class="student-name">{{fullname}}</strong>
+          <p class="student-age">Age: {{age}}</p>
+          <p class="student-grade">Grade: {{grade}}</p>
+        </div>
+    </script>
+
+    <div id="main-content">
+	    <div id="student-content"></div>
+    </div>
+</body>
+</html>

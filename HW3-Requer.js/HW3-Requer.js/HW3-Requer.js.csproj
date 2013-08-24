@@ -71,6 +71,7 @@
     <Content Include="scripts\libs\require.js" />
     <Content Include="scripts\libs\sammy-0.7.4.js" />
     <Content Include="scripts\libs\sammy-0.7.4.min.js" />
+    <Content Include="styles\styleTask2.css" />
     <Content Include="styles\style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
