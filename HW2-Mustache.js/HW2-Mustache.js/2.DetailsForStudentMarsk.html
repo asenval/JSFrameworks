@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/class.js"></script>
+    <script src="Scripts/jquery-2.0.3.js"></script>
+    <script src="Scripts/mustache.js"></script>
+    <script src="Scripts/controlers.js"></script>
+    <link href="styleTask2.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div id="student-content"></div>
+	<div id="mark-content"></div>
+
+    <script type="x-mustache-template" id="student-template">
+        <div id={{id}} class="student">{{fullname}}</div>
+        
+    </script>
+
+    <script type="x-mustache-template" id="mark-template">
+        {{#marks}}
+		<tr>
+        <td>{{subject}}</td>
+		<td>{{score}}</td>
+		</tr>
+        {{/marks}}
+        {{^marks}}
+        <td>This student has no marks, yet.</td>
+        {{/marks}}
+    </script>
+
+    <script>	
+		var Student = Class.create({
+			init: function (id, fname, lname, grade, age, marks) {
+				this.id = id;
+				this.fname = fname;
+				this.lname = lname;
+				this.grade = grade;
+				this.age = age;
+				this.marks = marks;
+			},
+			fullname: function () {
+				return this.fname + " " + this.lname;
+			}
+		});
+
+		var Mark = Class.create({
+			init: function (subject, score) {
+				this.subject = subject;
+				this.score = score;
+			}
+		});
+
+		var people = [
+			new Student(1, "Doncho", "Minkov", 3, 25, [new Mark("Math", 4), new Mark("JavaScript", 6)]),
+			new Student(2, "Nikolay", "Kostov", 2, 22, [new Mark("MVC", 6), new Mark("JavaScript", 5)]),
+			new Student(3, "Ivaylo", "Kendov", 1, 25, [new Mark("OOP", 4), new Mark("C#", 6)]),
+			new Student(4, "Svetlin", "Nakov", 3, 23, [new Mark("Unit Testing", 5), new Mark("WPF", 6)]),
+			new Student(5, "Georgi", "Georgiev", 1, 19, []),
+			new Student(6, "Asya", "Georgieva", 2, 28, [new Mark("Automation Testing", 6), new Mark("Manual Testing", 4)])
+		];
+
+		var studentTemplate = document.getElementById("student-template").innerHTML;
+		var markTemplate = document.getElementById("mark-template").innerHTML;
+		
+		var output = "";
+        for (var p in people) {
+            output += Mustache.render(studentTemplate, people[p]);
+        }
+		
+		document.getElementById("student-content").innerHTML = output;
+		
+		$(".student").bind("click", function () {
+            var element = $(this);  
+			var id = element.attr('id');
+			var person;
+			for (var i =0; i< people.length; i++){
+				if(people[i].id == id)
+				{
+					person = people[i];
+					break;
+				}
+			}
+			
+			var tableView = controlers.getTableMarkView(person);
+			var tableViewHtml = tableView.render(Mustache.compile(markTemplate));		
+			document.getElementById("mark-content").innerHTML = tableViewHtml;
+        });
+		
+        /*var Student = Class.create({
+            init: function (fname, lname, marks) {
+                this.fname = fname;
+                this.lname = lname
+                this.marks = marks;
+            },
+            fullname: function () {
+                return this.fname + " " + this.lname;
+            },
+            render: function () {
+                return function (text, render) {
+                    return "<strong>" + render(text) + "</strong>";
+                }
+            }
+        });
+
+        var Mark = Class.create({
+            init: function (subject, score) {
+                this.subject = subject;
+                this.score = score;
+            }
+        });
+
+        var people = [
+         new Student("Doncho", "Minkov", [new Mark("Math", 4), new Mark("JavaScript", 6)]),
+         new Student("Nikolay", "Kostov", [new Mark("MVC", 6), new Mark("JavaScript", 5), new Mark("C++", 4)]),
+         new Student("Ivaylo", "Kendov", [new Mark("OOP", 4), new Mark("C#", 6)]),
+         new Student("Svetlin", "Nakov", [new Mark("Unit Testing", 5), new Mark("WPF", 6)]),
+         new Student("Asya", "Georgieva", [new Mark("Automation Testing", 6), new Mark("Manual Testing", 4)]),
+            new Student("Asen", "Georgiev", [new Mark("Automation Testing", 6)]),
+         new Student("Georgi", "Georgiev")
+        ];*/
+		
+		/*        var studentTemplate = document.getElementById("student-template").innerHTML;
+        var markTemplate = document.getElementById("mark-template").innerHTML;
+
+        var output = "";
+        for (var p in people) {
+            output += Mustache.render(studentTemplate, people[p]);
+            output += Mustache.render(markTemplate, people[p]);
+
+        }
+
+
+        document.getElementById("content").innerHTML = output;
+
+        $(".student").bind("click", function () {
+            var nextElement = $(this).next();
+            if (nextElement.hasClass("mark")) {
+                nextElement.toggle();
+            }
+        });*/
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<script src="Scripts/class.js"></script>
+	<script src="Scripts/mustache.js"></script>
+    <script src="Scripts/jquery-2.0.3.js"></script>
+    <script src="Scripts/q.js"></script>
+    <script src="Scripts/controlers.js"></script>
+    <script src="Scripts/http-requester.js"></script>
+    <script src="Scripts/data-persister.js"></script>
+    <link href="styleTask1.css" rel="stylesheet" />
+</head>
+<body>
+	<script type="x-mustache-template" id="person-template">	
+			<strong>{{fullname}}</strong>
+			<ul>
+				{{#marks}} 
+					<li>
+						{{subject}}: <strong>{{score}}</strong>							
+					</li>
+				{{/marks}}
+				{{^marks}}	   
+					<li>
+						This student has no marks, yet	  						
+					</li>
+				{{/marks}}
+			</ul>			
+	</script>
+
+    <script type="x-mustache-template" id="table-template">
+            <td>{{fullname}}</td>
+            <td>{{grade}}</td>
+            <td>{{age}}</td>
+            {{#marks}}
+            <td>{{subject}}</td>
+            <td><strong>{{score}}</strong></td>
+            {{/marks}}
+            {{^marks}}
+            <td>No marks yet.</td>
+            {{/marks}}
+    </script>
+
+	<div id="content"></div>
+	<script>
+	    (function () {
+            // Without Services
+	        /*var Student = Class.create({
+	            init: function (fname, lname, grade, age, marks) {
+	                this.fname = fname;
+	                this.lname = lname;
+	                this.grade = grade;
+	                this.age = age;
+	                this.marks = marks;
+	            },
+	            fullname: function () {
+	                return this.fname + " " + this.lname;
+	            }
+	        });
+
+	        var Mark = Class.create({
+	            init: function (subject, score) {
+	                this.subject = subject;
+	                this.score = score;
+	            }
+	        });*/
+
+	        /*var people = [
+                new Student("Doncho", "Minkov", 3, 25, [new Mark("Math", 4), new Mark("JavaScript", 6)]),
+                new Student("Nikolay", "Kostov", 2, 22, [new Mark("MVC", 6), new Mark("JavaScript", 5)]),
+                new Student("Ivaylo", "Kendov", 1, 25, [new Mark("OOP", 4), new Mark("C#", 6)]),
+                new Student("Svetlin", "Nakov", 3, 23, [new Mark("Unit Testing", 5), new Mark("WPF", 6)]),
+                new Student("Georgi", "Georgiev", 1, 19),
+                new Student("Asya", "Georgieva", 2, 28, [new Mark("Automation Testing", 6), new Mark("Manual Testing", 4)])
+            ];
+
+            var personTemplate = Mustache.compile(document.getElementById("table-template").innerHTML);
+	            //var listView = controlers.getListView(people);
+	            //var listViewHtml = listView.render(personTemplate);
+	            var tableView = controlers.getTableView(people);
+	            var tableViewHtml = tableView.render(personTemplate, 7);
+
+	            document.getElementById("content").innerHTML = tableViewHtml;
+                */
+
+	        var serviceRoot = "http://localhost:26818/api/"
+
+	        var localPersister = SchoolStudents.persisters.getPersister(serviceRoot);
+
+	        var people = [];
+	        localPersister.students.getStudents().then(function (data) {
+	            people = data;
+	            
+	            var personTemplate = Mustache.compile(document.getElementById("table-template").innerHTML);
+	            //var listView = controlers.getListView(people);
+	            //var listViewHtml = listView.render(personTemplate);
+	            var tableView = controlers.getTableView(people);
+	            var tableViewHtml = tableView.render(personTemplate, 7);
+
+	            document.getElementById("content").innerHTML = tableViewHtml;
+	        });
+	        
+	    })();
+	</script>
+</body>
+</html>
