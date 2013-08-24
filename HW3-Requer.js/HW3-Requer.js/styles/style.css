@@ -1,0 +1,31 @@
+﻿#student-table-view {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+#mark-table-view {
+    margin: 0 auto;
+    border-collapse: collapse;
+    display: none;
+}
+
+#student-table-view tr td, th{
+    border: 1px solid black;
+    padding: 5px 10px 5px 10px;
+}
+#mark-table-view tr td, th{
+    border: 1px solid black;
+    padding: 5px 10px 5px 10px;
+}
+
+#mark-content {
+	position: absolute;
+	left:40%;
+	top: 10px;
+}
+
+#student-content  div{
+	margin: 5px 10px;
+}
+
+

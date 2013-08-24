@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+	<script src="Scripts/libs/require.js" data-main="scripts/app-config-task1"></script>
+    <link href="styles/style.css" rel="stylesheet" />
+</head>
+<body>
+	<script type="x-mustache-template" id="mark-template">
+        {{#.}}
+		<tr>
+        <td>{{subject}}</td>
+		<td>{{score}}</td>
+		</tr>
+        {{/.}}
+        {{^.}}
+        <td>This student has no marks, yet.</td>
+        {{/.}}
+    </script>
+
+    <script type="x-mustache-template" id="table-template">
+            <td id= "student-id-{{id}}" class="student">{{fullname}}</td>
+            <td>{{grade}}</td>
+            <td>{{age}}</td>
+    </script>
+
+    <div id="main-content">
+	    <div id="student-content"></div>
+	    <div id="mark-content"></div>
+    </div>
+</body>
+</html>
