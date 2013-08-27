@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="styles/style.css" rel="stylesheet" />
+    <script src="scripts/libs/require.js" data-main="scripts/app-config"></script>
+</head>
+<body>
+    <div id="top-navbar"></div>
+    <!--<div id="login-container" class="login-register-container" style="display:none"></div>
+    <div id="register-container" class="login-register-container" style="display:none"></div>
+    <div id="game-content"></div>-->
+    <div id="main-content"></div>
+
+<script type="x-mustache-template" id="form-template">
+	<form>
+		{{#header}}
+		<h3 class='control-header'>{{header}}</h3>
+		{{/header}}
+        {{#fields}}
+		    <label for="{{formName.cssName}}-{{cssName}}-input">{{name}}: </label>
+		    <input type="text" id="{{formName.cssName}}-{{cssName}}-input" />
+        {{/fields}}
+        {{#passwardField}}
+		    <label for="{{formName.cssName}}-{{cssName}}-input">{{name}}: </label>
+		    <input type="password" id="{{formName.cssName}}-{{cssName}}-input" />
+        {{/passwardField}}
+		<button id="btn-{{formName.cssName}}">{{formName.name}}</button>
+	</form
+</script>
+
+<script type="x-mustache-template" id="scores-template">
+	<h2> {{mainHeader}}</h2>
+	<table>
+		<thead>
+			<tr>
+			{{#headers}}
+				<th>{{.}}</th>
+			{{/headers}}
+			</tr>
+		</thead>
+		<tbody>
+		{{#data}}
+			<tr>
+			{{#.}}
+				<td>{{nickname}}</td>
+				<td>{{score}}</td>
+			{{/.}}
+			</tr>
+		{{/data}}		
+		</tbody>
+	</table>
+</script>
+
+<script type="x-mustache-template" id="gridView-template">
+	<h2> {{mainHeader}}</h2>
+	<table>
+		<thead>
+			<tr>
+			{{#headers}}
+				<th>{{.}}</th>
+			{{/headers}}
+			</tr>
+		</thead>
+		<tbody>
+		{{#data}}
+			<tr>
+			{{#.}}
+				<td>{{.}}</td>
+			{{/.}}
+			</tr>
+		{{/data}}		
+		</tbody>
+	</table>
+</script>
+</body>
+</html>
