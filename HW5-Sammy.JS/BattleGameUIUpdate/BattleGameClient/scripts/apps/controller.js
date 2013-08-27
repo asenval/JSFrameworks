@@ -5,7 +5,7 @@
 
 var BattleGameNS = BattleGameNS || {};
 
-define(["class", "apps/ui", "q"], function (Class, ui, Q) {
+define(["class", "apps/ui", "q", "underscore"], function (Class, ui, Q, underscore) {
 
 
 	BattleGameNS.controller = (function () {
@@ -45,7 +45,8 @@ define(["class", "apps/ui", "q"], function (Class, ui, Q) {
 				this.persister.user.getAllUserScores().then(function (data) {
 					self.scoresGrid = new BattleGameNS.ui.GridViewControl();
 					self.scoresGrid.build("#main-content", "Scores", "scores-gridview", ["nickname", "score"], [[]]);
-					self.scoresGrid.changeData(data);
+					var sortedData = underscore.sort(data, 'score');
+					self.scoresGrid.changeData(sortedData);
 					$("<button id='close'>Close</button>").appendTo("#scores-gridview").css({ 'position': 'absolute', 'right': '5px' }).on('click', function () {
 					    $("#scores-gridview").remove();
 					    window.history.back();

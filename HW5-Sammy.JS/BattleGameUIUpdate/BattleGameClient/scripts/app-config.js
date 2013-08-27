@@ -23,6 +23,7 @@ String.prototype.escape = function () {
 			mustache: "libs/mustache",
 			"class": "libs/class",
 			sammy: "libs/sammy-0.7.4",
+			underscore: "libs/underscore",
 			"cryptojs-sha1": "libs/cryptojs-sha1"
 		}
 	});
@@ -57,10 +58,6 @@ String.prototype.escape = function () {
 			        PresentLoginPage(accessController, gameController);
 			    }
 			});
-
-			//this.get("#/register", function () {
-			//    //BattleGameNS.ui.generateRegisterForm("register-container");
-			//});
 
 			this.get("#/game", function () {
 			    if (CheckPagePermission(accessController)) {
