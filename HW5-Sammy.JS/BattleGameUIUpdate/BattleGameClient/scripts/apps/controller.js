@@ -1,11 +1,12 @@
 ﻿/// <reference path="../libs/class.js" />
 /// <reference path="ui.js" />
 /// <reference path="data-persister.js" />
+/// <reference path="../libs/underscore.js" />
 
 
 var BattleGameNS = BattleGameNS || {};
 
-define(["class", "apps/ui", "q", "underscore"], function (Class, ui, Q, underscore) {
+define(["class", "apps/ui", "q"], function (Class, ui, Q) {
 
 
 	BattleGameNS.controller = (function () {
@@ -45,7 +46,7 @@ define(["class", "apps/ui", "q", "underscore"], function (Class, ui, Q, undersco
 				this.persister.user.getAllUserScores().then(function (data) {
 					self.scoresGrid = new BattleGameNS.ui.GridViewControl();
 					self.scoresGrid.build("#main-content", "Scores", "scores-gridview", ["nickname", "score"], [[]]);
-					var sortedData = underscore.sort(data, 'score');
+					var sortedData = _.sortBy(data, 'score');
 					self.scoresGrid.changeData(sortedData);
 					$("<button id='close'>Close</button>").appendTo("#scores-gridview").css({ 'position': 'absolute', 'right': '5px' }).on('click', function () {
 					    $("#scores-gridview").remove();

@@ -17,7 +17,7 @@ String.prototype.escape = function () {
 (function () {
 	require.config({
 		paths: {
-			jquery: "libs/jquery-2.0.2",
+		    jquery: "libs/jquery-1.9.1.min",
 			q: "libs/q",
 			httpRequester: "libs/http-requester",
 			mustache: "libs/mustache",
