@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="styles/style.css" rel="stylesheet" />
+    <script src="scripts/libs/jquery-1.9.1.min.js"></script>
+    <script src="scripts/EverliveSDKJS/min/everlive.all.min.js"></script>
+    <script src="scripts/EverliveSDKJS/src/reqwest.min.js"></script>
+    <script src="scripts/EverliveSDKJS/src/rsvp.min.js"></script>
+    <script src="scripts/EverliveSDKJS/src/underscore.min.js"></script>
+    <script src="scripts/EverliveSDKJS/src/everlive.min.js"></script>
+    <script src="scripts/EverliveSDKJS/src/kendo.data.everlive.min.js"></script>
+
+    <script src="scripts/libs/require.js" data-main="scripts/app-config"></script>
+</head>
+<body>
+    <div id="top-navbar"></div>
+    <div id="main-content"></div>
+
+<script type="x-mustache-template" id="form-template">
+	<form>
+		{{#header}}
+		<h3 class='control-header'>{{header}}</h3>
+		{{/header}}
+        {{#fields}}
+		    <label for="{{formName.cssName}}-{{cssName}}-input">{{name}}: </label>
+		    <input type="text" id="{{formName.cssName}}-{{cssName}}-input" />
+        {{/fields}}
+        {{#passwardField}}
+		    <label for="{{formName.cssName}}-{{cssName}}-input">{{name}}: </label>
+		    <input type="password" id="{{formName.cssName}}-{{cssName}}-input" />
+        {{/passwardField}}
+		<button id="btn-{{formName.cssName}}">{{formName.name}}</button>
+	</form
+</script>
+
+<script type="x-mustache-template" id="make-post-template">
+        <div id="mistDiv">
+            <div id="postsContainer">
+                <label for="titleInput">Title</label>
+                <input type="text" id="titleInput" />
+                <br />
+                <label for="ContentInput" id="contentLabel">Content</label>
+                <textarea id="ContentInput"></textarea>
+                <br />
+                <label for="tagsInput">Tags(separate with ',')</label>
+                <input type="text" id="tagsInput" />
+                <br/>
+                <a id="postBtn" class="button">Post</a>
+                <a href="#/posts" id="cancelBtn" class="button">Cancel</a>
+            </div>
+        </div>
+    </script>
+
+
+    <script type="x-mustache-template" id="single-post-content">
+        <div id="singlePostContainer" class="control-container">
+            <h3>{{Title}}</h3>
+            <div>
+                {{Content}}
+                
+            </div>
+            <div id="tagsCont"></div>
+            <div id="commentsCont"></div>
+        <br/>
+                <a class="button" id="CommentFormBtn" data-post-id="{{Id}}">AddComment</a>
+        </div>
+    </script>
+
+     <script type="x-mustache-template" id="leave-comment-template">
+        <div id="mistDiv">
+            <div id="postsContainer" class="control-container">
+                <h3>Add a comment</h3>
+                <label for="ContentCommentInput" id="contentLabel">Content</label>
+                <textarea id="ContentCommentInput"></textarea>
+                <br />
+                <a id="commentBtn" class="button">Post</a>
+                <a href="#/posts" id="cancelCommentBtn" class="button">Cancel</a>
+            </div>
+        </div>
+    </script>
+
+     <script type="x-mustache-template" id="tags-template">
+       <a href="#/posts/{{.}}">{{.}}</a>
+    </script>
+
+    <script type="x-mustache-template" id="comment-template">
+       <div>{{Content}}
+            <p>Author: {{Author}}</p>
+        </div>
+    </script>
+</body>
+</html>

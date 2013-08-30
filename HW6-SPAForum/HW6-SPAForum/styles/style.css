@@ -1,0 +1,83 @@
+body,
+table,
+tr,
+td,
+div {
+  padding: 0;
+  margin: 0; }
+
+body {
+  background-image: url(../images/first-page.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% auto; }
+  body .button {
+    font-size: 20px;
+    font-family: 'Arial Rounded MT';
+    height: 36px;
+    width: 120px;
+    border-radius: 15px;
+    background-color: rgba(128, 128, 128, 0.2);
+    margin: 0 5px; }
+
+.hidden {
+  display: none; }
+
+#top-navbar {
+  height: 40px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  margin-bottom: 10px;
+  background-color: burlywood; }
+  #top-navbar span {
+    font-size: 20px;
+    font-family: 'Arial Rounded MT';
+    height: 36px;
+    line-height: 40px;
+    vertical-align: middle;
+    padding-left: 15px; }
+
+.login-register-container {
+  width: 150px;
+  padding: 10px;
+  margin-top: 40px;
+  background-color: rgba(168, 168, 168, 0.7);
+  border: 2px solid rgba(208, 208, 208, 0.8);
+  border-radius: 5px; }
+
+.login-register-container input {
+  margin: 5px 0 5px 0; }
+
+.login-register-container button {
+  width: 70px;
+  font-size: 14px;
+  font-family: 'Arial Rounded MT';
+  margin-top: 5px;
+  position: relative;
+  left: 50%; }
+
+.control-container {
+  background-color: rgba(168, 168, 168, 0.7);
+  border: 2px solid rgba(208, 208, 208, 0.8);
+  border-radius: 15px;
+  margin-top:30px;
+  display: inline-block; }
+  .control-container h3 {
+    margin: 15px 25px; }
+  .control-container ul {
+    margin: 0 15px 0 0;
+    padding: 0 0 15px 50px;
+    list-style-type: none; }
+    .control-container ul li {
+      padding: 2px; }
+  .control-container table {
+    margin: 0 15px; }
+    .control-container table tbody tr td, .control-container table thead tr th {
+      pading: 5px; }
+  .control-container input {
+    width: 90px;
+    border-radius: 5px;
+    margin: 0 10px 0 5px; }
+
