@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.UA-Parser", "01.UA-Parser\01.UA-Parser.csproj", "{BE34F792-CBF6-4A53-BEF9-D2F166CE3ED4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.DatePicker", "03.DatePicker\03.DatePicker.csproj", "{30BEA628-C1F5-42D6-9669-D915776BC787}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.HTML5Elements", "02.HTML5Elements\02.HTML5Elements.csproj", "{6C0FDCB9-EB32-4A80-88E3-C8CA152DA007}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE34F792-CBF6-4A53-BEF9-D2F166CE3ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE34F792-CBF6-4A53-BEF9-D2F166CE3ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE34F792-CBF6-4A53-BEF9-D2F166CE3ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE34F792-CBF6-4A53-BEF9-D2F166CE3ED4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30BEA628-C1F5-42D6-9669-D915776BC787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30BEA628-C1F5-42D6-9669-D915776BC787}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30BEA628-C1F5-42D6-9669-D915776BC787}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30BEA628-C1F5-42D6-9669-D915776BC787}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C0FDCB9-EB32-4A80-88E3-C8CA152DA007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C0FDCB9-EB32-4A80-88E3-C8CA152DA007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C0FDCB9-EB32-4A80-88E3-C8CA152DA007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C0FDCB9-EB32-4A80-88E3-C8CA152DA007}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

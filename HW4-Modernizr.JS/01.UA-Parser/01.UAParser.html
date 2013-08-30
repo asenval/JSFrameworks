@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="scripts/ua-parser.js"></script>
+    <script src="scripts/jquery-1.9.1.min.js"></script>
+    <script src="scripts/modernizr-latest.js"></script>
+</head>
+<body>
+
+    <div id="content">
+
+    </div>
+        <script>
+            $(function () {
+                var parser = new UAParser();
+
+                var result = parser.getResult();
+                var wrapper = document.getElementById("content");
+
+                console.log(result.browser);
+                var browserInfo = result.browser;
+                
+                var browser = document.createElement("div");
+                browser.innerHTML = "Browser: " + browserInfo.name + " Version: " + browserInfo.version + " Major: " + browserInfo.major;
+                wrapper.appendChild(browser);
+
+                var deviceInfo = result.device;
+                var device = document.createElement("div");
+                device.innerHTML = "Model: " + deviceInfo.model + " Vendor: " + deviceInfo.vendor;
+                wrapper.appendChild(device);
+
+                var osInfo = result.os;
+                var os = document.createElement("div");
+                os.innerHTML = "Os: " + osInfo.name + " Version: " + osInfo.version;
+                wrapper.appendChild(os);
+                
+                $('#content').append('<table></table>');
+                var target = $("#content table")
+
+                var traverse = function (object, prefix) {
+                    prefix = prefix ? prefix + '.' : '';
+
+                    for (property in object) {
+                        if (typeof object[property] == 'object') {
+                            traverse(object[property], prefix + property);
+                        } else if (typeof object[property] == 'boolean') {
+                            var
+                                tr = $('<tr />'),
+                                name = $('<th />', {
+                                    text: prefix + property
+                                }),
+                                value = $('<td />', {
+                                    text: object[property] ? 'Yes' : 'Nope'
+                                });
+
+                            target.append(tr.append(name).append(value));
+                        }
+                    }
+                };
+
+                traverse(Modernizr, 'Modernizr');
+            });
+    </script>
+</body>
+</html>
